@@ -536,8 +536,9 @@ ArchiveVersion mmArchiveVersion = DetectArchiveVersion("mm.o2r", true);
                             continue;
                         }
                         extractionTask = threadPool->submit_task([&]() -> bool {
-                            bool success = extract.CallZapd(installPath, Ship::Context::GetAppDirectoryPath(appShortName),
-                                                            &extractCount, &totalExtract);
+                            bool success =
+                                extract.CallZapd(installPath, Ship::Context::GetAppDirectoryPath(appShortName),
+                                                 &extractCount, &totalExtract);
                             extractCount = 0;
                             totalExtract = 0;
                             return success;
@@ -797,9 +798,8 @@ void OTRGlobals::Initialize() {
     // PAL stores many UI resources in per-language files. Resolve the
     // English/base path to the selected PAL language before cache/archive lookup.
     if (hasPalVersion) {
-        context->GetResourceManager()->SetResourcePathResolver([](const std::string& path) {
-            return PalAssetLocalization::Resolve(path, gSaveContext.options.language);
-        });
+        context->GetResourceManager()->SetResourcePathResolver(
+            [](const std::string& path) { return PalAssetLocalization::Resolve(path, gSaveContext.options.language); });
     }
 }
 
@@ -1382,8 +1382,7 @@ extern "C" uint32_t ResourceMgr_GetGameVersion(int index) {
 }
 
 extern "C" bool ResourceMgr_HasGameVersion(uint32_t version) {
-    const auto versions =
-        Ship::Context::GetRawInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions();
+    const auto versions = Ship::Context::GetRawInstance()->GetResourceManager()->GetArchiveManager()->GetGameVersions();
 
     for (uint32_t gameVersion : versions) {
         if (gameVersion == version) {

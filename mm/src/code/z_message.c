@@ -2421,7 +2421,7 @@ void Message_Decode(PlayState* play) {
     u8 index2 = 0;
 
     // Non-PAL releases currently expose only the English message bank.
-    if (ResourceMgr_GetGameRegion(0) != GAME_REGION_PAL) {
+    if (!ResourceMgr_HasGameVersion(MM_PAL_11)) {
         gSaveContext.options.language = LANGUAGE_ENG;
     }
 
@@ -3361,7 +3361,7 @@ void Message_OpenText(PlayState* play, u16 textId) {
     GameInteractor_ExecuteOnOpenText(&textId, &loadFromMessageTable);
 
     // Non-PAL releases currently expose only the English message bank.
-    if (ResourceMgr_GetGameRegion(0) != GAME_REGION_PAL) {
+    if (!ResourceMgr_HasGameVersion(MM_PAL_11)) {
         gSaveContext.options.language = LANGUAGE_ENG;
     }
 
@@ -3514,7 +3514,7 @@ void func_801514B0(PlayState* play, u16 arg1, u8 arg2) {
     Player* player = GET_PLAYER(play);
     f32 temp = 1024.0f;
     // Non-PAL releases currently expose only the English message bank.
-    if (ResourceMgr_GetGameRegion(0) != GAME_REGION_PAL) {
+    if (!ResourceMgr_HasGameVersion(MM_PAL_11)) {
         gSaveContext.options.language = LANGUAGE_ENG;
     }
 

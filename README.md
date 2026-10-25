@@ -78,12 +78,20 @@ Open the Homebrew Menu by **holding R while launching a game** (title override).
 
 Pick the language in the game's options. The choice is saved.
 
+<img src="docs/screenshots/options-language.jpg" width="640" alt="In-game Options screen of the PAL version, with the four languages: English, Deutsch, Français, Español">
+
+_The PAL Options screen on Switch (French selected)._
+
 ## Controls
 
 - **Minus (−)** opens the 2Ship menu (enhancements, cheats, settings).
 - **Gyro aiming** and **rumble** work with Joy-Cons, the Pro Controller and compatible third-party controllers. You can choose the gyro source (left, right or both Joy-Cons) in the controller settings.
 
 When you create a save, 2Ship 5.x asks you to pick **Vanilla** or **Randomizer**, then an options preset (*None*, *Curated*, *Defaults*, *Voyage 3*). For the original experience, choose **Vanilla** with **Defaults**.
+
+<img src="docs/screenshots/new-file-mode.jpg" width="640" alt="New File screen: options preset and Vanilla / Randomizer mode">
+
+_The new file screen: options preset and Vanilla / Randomizer mode._
 
 ## Known limitations
 

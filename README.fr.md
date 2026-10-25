@@ -79,12 +79,20 @@ Ouvre le Homebrew Menu en **maintenant R pendant le lancement d'un jeu** (title 
 
 Choisis la langue dans les options du jeu. Ton choix est sauvegardé.
 
+<img src="docs/screenshots/options-language.jpg" width="640" alt="Écran Options de la version PAL, avec les quatre langues : English, Deutsch, Français, Español">
+
+_L'écran Options de la version PAL sur Switch (français sélectionné)._
+
 ## Commandes
 
 - **Moins (−)** ouvre le menu de 2Ship (améliorations, cheats, réglages).
 - **La visée au gyroscope** et **les vibrations** fonctionnent avec les Joy-Con, la manette Pro et les manettes tierces compatibles. Tu peux choisir la source du gyroscope (Joy-Con gauche, droit ou les deux) dans les réglages de la manette.
 
 Quand tu crées une sauvegarde, 2Ship 5.x te demande de choisir **Vanilla** ou **Randomizer**, puis un preset d'options (*None*, *Curated*, *Defaults*, *Voyage 3*). Pour retrouver le jeu d'origine, choisis **Vanilla** avec **Defaults**.
+
+<img src="docs/screenshots/new-file-mode.jpg" width="640" alt="Écran New File : preset d'options et mode Vanilla / Randomizer">
+
+_L'écran de nouvelle sauvegarde : preset d'options et mode Vanilla / Randomizer._
 
 ## Limitations connues
 

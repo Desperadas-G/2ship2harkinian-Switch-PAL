@@ -79,12 +79,20 @@ Abre el Homebrew Menu **manteniendo pulsado R al iniciar un juego** (title overr
 
 Elige el idioma en las opciones del juego. La elección se guarda.
 
+<img src="docs/screenshots/options-language.jpg" width="640" alt="Pantalla de opciones de la versión PAL, con los cuatro idiomas: English, Deutsch, Français, Español">
+
+_La pantalla de opciones PAL en Switch (con francés seleccionado)._
+
 ## Controles
 
 - **Menos (−)** abre el menú de 2Ship (mejoras, trucos, ajustes).
 - **El apuntado con giroscopio** y **la vibración** funcionan con los Joy-Con, el Pro Controller y los mandos de terceros compatibles. Puedes elegir la fuente del giroscopio (Joy-Con izquierdo, derecho o ambos) en los ajustes del mando.
 
 Al crear una partida, 2Ship 5.x te pide elegir **Vanilla** o **Randomizer** y después un preset de opciones (*None*, *Curated*, *Defaults*, *Voyage 3*). Para jugar como en el original, elige **Vanilla** con **Defaults**.
+
+<img src="docs/screenshots/new-file-mode.jpg" width="640" alt="Pantalla New File: preset de opciones y modo Vanilla / Randomizer">
+
+_La pantalla de nueva partida: preset de opciones y modo Vanilla / Randomizer._
 
 ## Limitaciones conocidas
 

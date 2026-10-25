@@ -79,12 +79,20 @@ sdmc:/switch/2s2h/
 
 Wähle die Sprache in den Spieloptionen. Die Auswahl wird gespeichert.
 
+<img src="docs/screenshots/options-language.jpg" width="640" alt="Optionsbildschirm der PAL-Version mit den vier Sprachen: English, Deutsch, Français, Español">
+
+_Der PAL-Optionsbildschirm auf der Switch (hier mit Französisch)._
+
 ## Steuerung
 
 - **Minus (−)** öffnet das 2Ship-Menü (Verbesserungen, Cheats, Einstellungen).
 - **Gyro-Zielen** und **Rumble** funktionieren mit Joy-Cons, dem Pro Controller und kompatiblen Controllern von Drittanbietern. Die Gyro-Quelle (linker, rechter oder beide Joy-Cons) lässt sich in den Controller-Einstellungen wählen.
 
 Beim Anlegen eines Spielstands fragt 2Ship 5.x nach **Vanilla** oder **Randomizer** und danach nach einem Options-Preset (*None*, *Curated*, *Defaults*, *Voyage 3*). Für das Originalspiel wähle **Vanilla** mit **Defaults**.
+
+<img src="docs/screenshots/new-file-mode.jpg" width="640" alt="New-File-Bildschirm: Options-Preset und Modus Vanilla / Randomizer">
+
+_Der Bildschirm für einen neuen Spielstand: Options-Preset und Modus Vanilla / Randomizer._
 
 ## Bekannte Einschränkungen
 

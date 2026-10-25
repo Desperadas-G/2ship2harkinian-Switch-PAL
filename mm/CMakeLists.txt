@@ -670,15 +670,17 @@ endif()
 
 if(CMAKE_SYSTEM_NAME MATCHES "NintendoSwitch")
 
+# mm/ declares its own project() without a version, so take it from the top-level project.
+# The NACP version field holds at most 15 characters. hbmenu only decodes JPEG icons (256x256).
 nx_generate_nacp(2s2h.nacp
-   NAME "2s2h of Harkinian"
-   AUTHOR "${PROJECT_TEAM}"
-   VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
+   NAME "2 Ship 2 Harkinian"
+   AUTHOR "HarbourMasters (2Ship ${CMAKE_PROJECT_VERSION}) / Desperadas (Switch PAL)"
+   VERSION "${SWITCH_PAL_VERSION}-NX-PAL"
 )
 
 nx_create_nro(2ship
     NACP 2s2h.nacp
-    ICON ${CMAKE_CURRENT_SOURCE_DIR}/switch/2s2hIcon.png
+    ICON ${CMAKE_CURRENT_SOURCE_DIR}/switch/2s2hIcon.jpg
 )
 
 INSTALL(FILES ${CMAKE_CURRENT_BINARY_DIR}/2s2h.nro DESTINATION . COMPONENT 2s2h)

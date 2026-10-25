@@ -57,6 +57,17 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: CMakeLists.txt
+          sparse-checkout-cone-mode: false
+      - name: Check that the tag matches SWITCH_PAL_VERSION
+        run: |
+          version=$(sed -n 's/^set(SWITCH_PAL_VERSION "\([^"]*\)".*/\1/p' CMakeLists.txt)
+          if [ "v${version}" != "${GITHUB_REF_NAME}" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} does not match SWITCH_PAL_VERSION ${version} in CMakeLists.txt"
+            exit 1
+          fi
       - uses: actions/download-artifact@v4
         with:
           path: dist

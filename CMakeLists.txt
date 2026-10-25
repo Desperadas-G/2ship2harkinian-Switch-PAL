@@ -13,6 +13,9 @@ set(SPDLOG_LEVEL_OFF 6)
 set(SPDLOG_MIN_CUTOFF SPDLOG_LEVEL_TRACE CACHE STRING "cutoff at trace")
 set(PROJECT_BUILD_NAME "Battler Bravo" CACHE STRING "" FORCE)
 set(PROJECT_TEAM "github.com/harbourmasters" CACHE STRING "" FORCE)
+# Version of this Switch PAL fork, shown in hbmenu. Must match the release tag (vX.Y.Z).
+# The 2Ship version above stays separate: it is written into the .o2r archives.
+set(SWITCH_PAL_VERSION "1.0.1" CACHE STRING "" FORCE)
 
 execute_process(
     COMMAND git branch --show-current

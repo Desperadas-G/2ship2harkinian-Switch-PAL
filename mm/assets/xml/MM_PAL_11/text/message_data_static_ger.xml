@@ -1,5 +1,5 @@
 <Root>
     <File Name="message_data_static_ger">
-        <TextMM Name="message_data_static_ger" SegmentName="code_ger"/>
+        <TextMM Name="message_data_static_ger" CodeFile="code_ger" CodeOffset="0x0"/>
     </File>
 </Root>

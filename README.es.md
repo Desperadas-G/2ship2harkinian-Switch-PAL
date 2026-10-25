@@ -2,6 +2,8 @@
 
 [English](README.md) · [Français](README.fr.md) · [Deutsch](README.de.md) · **Español**
 
+[![switch-build](https://github.com/Desperadas-G/2ship2harkinian-Switch-PAL/actions/workflows/switch.yml/badge.svg)](https://github.com/Desperadas-G/2ship2harkinian-Switch-PAL/actions/workflows/switch.yml)
+
 Un port no oficial para Nintendo Switch de [2 Ship 2 Harkinian](https://github.com/2ship2harkinian/2ship2harkinian) (2S2H) que además funciona con la **versión europea (PAL 1.1) de *The Legend of Zelda: Majora's Mask***, con sus cuatro idiomas: **inglés, francés, alemán y español**.
 
 Funciona como homebrew en una Switch con el custom firmware [Atmosphère](https://github.com/Atmosphere-NX/Atmosphere).

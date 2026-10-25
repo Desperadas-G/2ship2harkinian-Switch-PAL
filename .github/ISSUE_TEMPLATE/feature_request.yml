@@ -1,0 +1,19 @@
+name: Feature request
+description: Suggest an improvement for the Switch or PAL version
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        General 2Ship features (enhancements, randomizer...) are developed upstream. This fork follows their releases.
+        Requests specific to the Switch or PAL are welcome here.
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would it be useful?

@@ -1,82 +1,126 @@
-[comment]: <> (Todo: Make Light Mode Image)
-[comment]: <> (Todo: Make Dark Mode Image)
+# 2 Ship 2 Harkinian – Switch PAL
 
-# 2 Ship 2 Harkinian
+An unofficial Nintendo Switch port of [2 Ship 2 Harkinian](https://github.com/2ship2harkinian/2ship2harkinian) (2S2H) that also runs the **European (PAL 1.1) version of *The Legend of Zelda: Majora's Mask***, with its four languages: **English, French, German and Spanish**.
 
-## Discord
+It runs as homebrew on a Switch with the [Atmosphère](https://github.com/Atmosphere-NX/Atmosphere) custom firmware.
 
-Official Discord: https://discord.com/invite/shipofharkinian
+> This project is not affiliated with Nintendo, HarbourMasters or the 2Ship team. Please don't ask the official 2Ship Discord for support with this fork. Use this repository's [issues](../../issues) instead.
 
-If you're having any trouble after reading through this `README`, feel free ask for help in the 2 Ship 2 Harkinian Support text channels. Please keep in mind that we do not condone piracy.
+**🇫🇷 En bref :** le portage Switch de 2Ship2Harkinian, avec en plus le support de la cartouche européenne PAL 1.1, en anglais, français, allemand ou espagnol. Tu dois posséder le jeu original et extraire toi-même les données de ta propre cartouche. Instructions ci-dessous.
 
-# Quick Start
+## ⚖️ Legal notice / Mentions légales
 
-2Ship does not include any copyrighted assets.  You are required to provide a supported copy of the game.
+- **This repository contains no ROM and no Nintendo assets**, and its releases never will. It only contains source code, which is not a copy of the game: the game's code was decompiled and rewritten as C by the [zeldaret/mm](https://github.com/zeldaret/mm) project.
+- **You must own a legitimate copy of *The Legend of Zelda: Majora's Mask*** and dump it **from your own cartridge** (or your own GameCube disc for the US GC version). The game data (`mm.o2r`) is generated on your own computer, from your own dump.
+- **Do not ask for ROMs, and never share ROMs or `mm.o2r` files**, here or anywhere else. Issues, pull requests or comments that link to ROMs, or ask for them, will be closed and deleted.
+- Downloading a ROM of a game you do not own is piracy and illegal in most countries. We do not condone piracy.
+- This is a non-commercial fan project. It is not affiliated with, endorsed or sponsored by Nintendo. *The Legend of Zelda* and *Majora's Mask* are trademarks of Nintendo.
 
-### 1. Verify your ROM dump
-You can verify you have dumped a supported copy of the game by using the compatibility checker at https://2ship.equipment/. If you'd prefer to manually validate your ROM dump, you can cross-reference its `sha1` hash with the hashes [here](docs/supportedHashes.json).
+> 🇫🇷 Ce dépôt ne contient **aucune ROM ni aucune donnée du jeu**, et ses releases n'en contiendront jamais. Pour l'utiliser, tu dois **posséder la cartouche originale** et en faire toi-même le dump. Les données du jeu (`mm.o2r`) sont générées sur ton propre ordinateur à partir de ce dump. Ne demande pas de ROM et n'en partage jamais, ni de fichier `mm.o2r` : ce serait du piratage, illégal dans la plupart des pays. Projet amateur non commercial, sans lien avec Nintendo.
 
-### 2. Download 2 Ship 2 Harkinian from [Releases](https://github.com/HarbourMasters/2Ship2Harkinian/releases)
+## Based on
 
-### 3. Launch the Game!
-#### Windows
-* Extract the zip
-* Launch `2ship.exe`
+| Component | Version |
+|---|---|
+| 2 Ship 2 Harkinian | **5.0.1 "Battler Bravo"** |
+| Switch port | [starshopper612/2ship2harkinian-Switch](https://github.com/starshopper612/2ship2harkinian-Switch) `switch-5.0.1-v3` (gyro and rumble) |
+| PAL 1.1 support | [2ship2harkinian#1966](https://github.com/2ship2harkinian/2ship2harkinian/pull/1966) by alexbcz ([alexbcz/2ship2harkinian-PAL](https://github.com/alexbcz/2ship2harkinian-PAL)) |
 
-#### Linux
-* Place your supported copy of the game in the same folder as the appimage.
-* Execute `2ship.appimage`. You may have to `chmod +x` the appimage via terminal.
+## Supported ROMs
 
-#### macOS
-* Run `2ship.app`.
-* When prompted, select your supported copy of the game.
+2Ship contains **no** copyrighted assets. You must dump your own cartridge.
 
-### 4. Play!
+| Version | Supported | Header CRC | SHA-1 (`.z64`) |
+|---|---|---|---|
+| **PAL 1.1 / Rev A** (Europe, En/Fr/De/Es) | ✅ | `0A5D8F83` | `bb4e4757d10727c7584c59c1f2e5f44196e9c293` |
+| NTSC-U 1.0 (USA) | ✅ | `5354631C` | `d6133ace5afaa0882cf214cf88daba39e266c078` |
+| NTSC-U GameCube (Collector's Edition) | ✅ | `B443EB08` | `9743aa026e9269b339eb0e3044cd5830a440c1fd` |
+| PAL 1.0 (first European release) | ❌ | `E97955C6` | – |
+| Japanese versions, PAL GameCube, *Majora's Mask 3D* | ❌ | – | – |
 
-Congratulations, you are now sailing with 2 Ship 2 Harkinian! Have fun!
+PAL 1.0 and 1.1 cartridges look the same. The header CRC (bytes `0x10`–`0x13` of a `.z64` dump) tells them apart. `tools/generate-o2r.sh` checks it for you. Byte-swapped dumps (`.v64`, `.n64`) are converted automatically.
 
-# Configuration
+Patched or translated ROMs (fan translations, hacks) are not supported.
 
-### Default keyboard configuration
-| N64 | A | B | Z | Start | Analog stick | C buttons | D-Pad |
-| - | - | - | - | - | - | - | - |
-| Keyboard | X | C | Z | Space | WASD | Arrow keys | TFGH |
+## Installation
 
-### Other shortcuts
-| Keys | Action |
-| - | - |
-| F1 | Toggle menubar |
-| F11 | Fullscreen |
-| Tab | Toggle Alternate assets |
-| Ctrl+R | Reset |
+### 1. Get the files
 
-### Graphics Backends
-Currently, there are three rendering APIs supported: DirectX 11 (Windows), OpenGL (all platforms), and Metal (macOS). You can change which API to use in the `Settings` menu of the menubar, which requires a restart.
+Download `2ship.nro` and `2ship.o2r` from [Releases](../../releases), or [build them yourself](docs/BUILDING_SWITCH.md).
 
-If you're having an issue with crashing, you can also change the API manually in the `2ship2harkinian.json` file by finding the `"Backend": {` section and updating the backend ID and name. Be sure to use one of the valid values:
+### 2. Generate `mm.o2r` from your ROM
 
-- `0` = DirectX 11 (default on Windows)
-- `1` = OpenGL
-- `2` = Metal (default on macOS)
+`mm.o2r` holds the game's assets, extracted from your ROM. Generate it on a PC running Linux or WSL (Windows):
 
-# Custom Assets
+```bash
+git clone <this repository>
+cd 2ship2harkinian-Switch-PAL
+tools/generate-o2r.sh /path/to/your/rom.z64
+```
 
-Custom assets are packed in `.o2r` or `.otr` files. To use custom assets, place them in the `mods` folder.
+Install the dependencies first. They are listed in [docs/BUILDING_SWITCH.md](docs/BUILDING_SWITCH.md#1-host-dependencies).
 
-If you're interested in creating and/or packing your own custom asset `.o2r`/`.otr` files, check out the following tools:
-* [**retro - OTR and O2R generator**](https://github.com/HarbourMasters64/retro)
-* [**fast64 - Blender plugin (Note that MM is not fully supported at this time)**](https://github.com/HarbourMasters/fast64)
+`mm.o2r` must be generated from the **same version** of this repository as the `2ship.nro` you use. Never share your `mm.o2r`: it contains the game's copyrighted data.
 
-# Development
+### 3. Copy to the SD card
 
-If you want to manually compile 2S2H, please consult the [building instructions](docs/BUILDING.md).
+```
+sdmc:/switch/2s2h/
+├── 2ship.nro
+├── 2ship.o2r
+└── mm.o2r
+```
 
-# Nightly Builds
-If you want to playtest a continuous integration build, you can find them at the links below. Keep in mind that these are for playtesting only, and you will likely encounter bugs and possibly crashes. 
+### 4. Launch
 
-* [Windows](https://nightly.link/HarbourMasters/2ship2harkinian/workflows/main/develop/2ship-windows.zip)
-* [Linux](https://nightly.link/HarbourMasters/2ship2harkinian/workflows/main/develop/2ship-linux.zip)
-* [Mac](https://nightly.link/HarbourMasters/2ship2harkinian/workflows/main/develop/2ship-mac.zip)
+Open the Homebrew Menu by **holding R while launching a game** (title override). Don't launch it from the Album applet: applet mode has too little memory and the game will crash or refuse to start.
+
+### 5. Choose your language (PAL only)
+
+Pick the language in the game's options. The choice is saved.
+
+## Controls
+
+- **Minus (−)** opens the 2Ship menu (enhancements, cheats, settings).
+- **Gyro aiming** and **rumble** work with Joy-Cons, the Pro Controller and compatible third-party controllers. You can choose the gyro source (left, right or both Joy-Cons) in the controller settings.
+
+When you create a save, 2Ship 5.x asks you to pick **Vanilla** or **Randomizer**, then an options preset (*None*, *Curated*, *Defaults*, *Voyage 3*). For the original experience, choose **Vanilla** with **Defaults**.
+
+## Known limitations
+
+- PAL support is new and comes from an upstream pull request that has not been merged yet. Some localized text or textures may still be wrong. Please [report them](../../issues/new/choose).
+- PAL 1.0 isn't supported yet.
+- The desktop builds (Windows/Linux/macOS) have not been tested in this fork.
+
+## Building
+
+See [docs/BUILDING_SWITCH.md](docs/BUILDING_SWITCH.md) for the Switch build, and [docs/BUILDING.md](docs/BUILDING.md) for the upstream desktop instructions.
+
+## Contributing
+
+Bug reports, fixes and improvements are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) first.
+
+## Credits
+
+This fork only brings existing work together and adapts it for the Switch. All credit goes to:
+
+- **[2 Ship 2 Harkinian](https://github.com/2ship2harkinian/2ship2harkinian)**: the HarbourMasters / 2Ship team and contributors (the PC port this is built on).
+- **[zeldaret/mm](https://github.com/zeldaret/mm)**: the *Majora's Mask* decompilation that made the port possible.
+- **[libultraship](https://github.com/Kenix3/libultraship)** (Kenix3 and contributors), **[ZAPDTR](https://github.com/HarbourMasters/ZAPDTR)** and **[OTRExporter](https://github.com/HarbourMasters/OTRExporter)** (HarbourMasters): the engine and asset tools.
+- **[YoshiCrystal9/2ship2harkinian-Switch](https://github.com/YoshiCrystal9/2ship2harkinian-Switch)**: the original Switch port, and the Switch icon.
+- **[starshopper612/2ship2harkinian-Switch](https://github.com/starshopper612/2ship2harkinian-Switch)** (formerly reflex909): the 5.0.1 forward-port, gyro, rumble and controller fixes, and the Switch forks of libultraship, OTRExporter and ZAPDTR.
+- **[timschneeb](https://github.com/timschneeb)**: the Switch gyro and rumble code (from Shipwright-Switch).
+- **[alexbcz](https://github.com/alexbcz)**: PAL 1.1 support ([2ship2harkinian#1966](https://github.com/2ship2harkinian/2ship2harkinian/pull/1966), [2ship2harkinian-PAL](https://github.com/alexbcz/2ship2harkinian-PAL)) and the matching libultraship, OTRExporter and ZAPDTR changes.
+- **[inspectredc](https://github.com/inspectredc)**: earlier PAL work ([2ship2harkinian#1231](https://github.com/2ship2harkinian/2ship2harkinian/pull/1231), ZAPDTR/OTRExporter MM PAL support).
+- **[devkitPro](https://devkitpro.org)**: the Switch toolchain and libnx.
+
+See [docs/SOURCES.md](docs/SOURCES.md) for the exact commits used.
+
+## License
+
+Same licenses as the upstream projects: see [LICENSE](LICENSE), and `libultraship/LICENSE`, `OTRExporter/LICENSE` and `ZAPDTR/LICENSE` for the bundled components.
+
+*The Legend of Zelda: Majora's Mask* is © Nintendo. This repository contains no game assets.
 
 <a href="https://github.com/Kenix3/libultraship/">
   <picture>
@@ -84,4 +128,3 @@ If you want to playtest a continuous integration build, you can find them at the
     <img alt="Powered by libultraship" src="./docs/poweredbylus.lightmode.png">
   </picture>
 </a>
-

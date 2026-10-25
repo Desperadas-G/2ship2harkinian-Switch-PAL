@@ -1,0 +1,51 @@
+name: PAL text or translation issue
+description: Wrong, missing or badly displayed text or texture in English, French, German or Spanish
+labels: ["pal", "localization"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for text that is wrong, untranslated, cut off or overlapping, and for textures in the wrong language.
+        **Never attach, link or ask for ROMs or `mm.o2r` files.**
+  - type: checkboxes
+    id: legal
+    attributes:
+      label: Requirements
+      options:
+        - label: I own the original PAL game and made the ROM dump myself.
+          required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - English
+        - French
+        - German
+        - Spanish
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Release or commit of this repository
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Where does it happen?
+      description: Menu, location, character, item...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What does it show, and what should it show?
+      description: For text, compare with the original N64 cartridge if you can.
+    validations:
+      required: true
+  - type: textarea
+    id: media
+    attributes:
+      label: Screenshot or photo

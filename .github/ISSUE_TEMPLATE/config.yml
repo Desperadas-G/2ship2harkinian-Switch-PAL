@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Upstream 2Ship bug (also happens on the official PC version)
+    url: https://github.com/2ship2harkinian/2ship2harkinian/issues
+    about: Bugs that are not specific to the Switch or PAL belong upstream.

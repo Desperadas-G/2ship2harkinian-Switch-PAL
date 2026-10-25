@@ -1,0 +1,80 @@
+name: Bug report
+description: Crash, freeze, graphical glitch or anything that doesn't work as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Never attach, link or ask for ROMs or `mm.o2r` files.** Issues that do will be closed and deleted.
+  - type: checkboxes
+    id: legal
+    attributes:
+      label: Requirements
+      options:
+        - label: I own the original game and made the ROM dump myself.
+          required: true
+        - label: I searched the existing issues and this one hasn't been reported yet.
+          required: true
+  - type: dropdown
+    id: rom
+    attributes:
+      label: ROM version
+      options:
+        - PAL 1.1 / Rev A (Europe)
+        - NTSC-U 1.0 (USA)
+        - NTSC-U GameCube
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Game language (PAL only)
+      options:
+        - English
+        - French
+        - German
+        - Spanish
+        - Not applicable
+  - type: input
+    id: version
+    attributes:
+      label: Release or commit of this repository
+      placeholder: e.g. v1.0.0 or a1b2c3d
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Switch model, firmware and Atmosphère versions
+      placeholder: e.g. Switch OLED, firmware 20.1.0, Atmosphère 1.9.0
+    validations:
+      required: true
+  - type: dropdown
+    id: launch
+    attributes:
+      label: Launch method
+      options:
+        - Title override (holding R while launching a game)
+        - Album / applet mode
+        - Other (please explain below)
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Load a save in Clock Town
+        2. ...
+  - type: textarea
+    id: media
+    attributes:
+      label: Screenshots, photos or logs
+      description: A crash report from Atmosphère (sdmc:/atmosphere/crash_reports/) helps a lot for crashes.

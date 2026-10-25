@@ -6,5 +6,9 @@
     {
         "name": "NTSC-U GC",
         "sha1": "9743aa026e9269b339eb0e3044cd5830a440c1fd"
+    },
+    {
+        "name": "PAL 1.1 (Rev A)",
+        "sha1": "bb4e4757d10727c7584c59c1f2e5f44196e9c293"
     }
 ]

@@ -74,3 +74,13 @@ _packages/
 
 build/
 .cache
+# Never commit game data: ROM dumps and generated archives
+*.z64
+*.n64
+*.v64
+*.rom
+*.o2r
+*.otr
+out/
+build-host/
+build-switch/

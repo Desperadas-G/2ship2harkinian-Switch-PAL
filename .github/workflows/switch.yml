@@ -1,0 +1,78 @@
+name: switch-build
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+
+jobs:
+  nro:
+    name: Build 2ship.nro
+    runs-on: ubuntu-24.04
+    container: devkitpro/devkita64:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          /opt/devkitpro/portlibs/switch/bin/aarch64-none-elf-cmake -S . -B build-switch -GNinja -DCMAKE_BUILD_TYPE=Release
+      - name: Build
+        run: cmake --build build-switch -j"$(nproc)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 2ship-nro
+          path: build-switch/mm/2ship.nro
+          if-no-files-found: error
+
+  o2r:
+    name: Build 2ship.o2r
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ninja-build $(cat .github/workflows/apt-deps.txt) libzip-dev zipcmp zipmerge ziptool libbz2-dev
+      - name: Generate 2ship.o2r
+        run: |
+          cmake -S . -B build-host -GNinja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build-host --target Generate2ShipOtr
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 2ship-o2r
+          path: 2ship.o2r
+          if-no-files-found: error
+
+  release:
+    name: Publish release
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [nro, o2r]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Package
+        run: |
+          mkdir -p pkg/switch/2s2h
+          cp dist/2ship.nro dist/2ship.o2r pkg/switch/2s2h/
+          (cd pkg && zip -r ../2Ship-Switch-PAL-${GITHUB_REF_NAME}.zip switch)
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            2Ship-Switch-PAL-${{ github.ref_name }}.zip
+            dist/2ship.nro
+            dist/2ship.o2r
+          body: |
+            **No ROM and no game data are included.** You must own the original game and generate `mm.o2r` yourself from your own cartridge dump with `tools/generate-o2r.sh` from this exact tag. See the README.
+
+            Copy the files to `sdmc:/switch/2s2h/` next to your `mm.o2r`.

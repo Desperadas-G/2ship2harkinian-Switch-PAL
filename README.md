@@ -1,12 +1,12 @@
 # 2 Ship 2 Harkinian – Switch PAL
 
+**English** · [Français](README.fr.md) · [Deutsch](README.de.md) · [Español](README.es.md)
+
 An unofficial Nintendo Switch port of [2 Ship 2 Harkinian](https://github.com/2ship2harkinian/2ship2harkinian) (2S2H) that also runs the **European (PAL 1.1) version of *The Legend of Zelda: Majora's Mask***, with its four languages: **English, French, German and Spanish**.
 
 It runs as homebrew on a Switch with the [Atmosphère](https://github.com/Atmosphere-NX/Atmosphere) custom firmware.
 
 > This project is not affiliated with Nintendo, HarbourMasters or the 2Ship team. Please don't ask the official 2Ship Discord for support with this fork. Use this repository's [issues](../../issues) instead.
-
-**🇫🇷 En bref :** le portage Switch de 2Ship2Harkinian, avec en plus le support de la cartouche européenne PAL 1.1, en anglais, français, allemand ou espagnol. Tu dois posséder le jeu original et extraire toi-même les données de ta propre cartouche. Instructions ci-dessous.
 
 ## ⚖️ Legal notice / Mentions légales
 
@@ -15,9 +15,6 @@ It runs as homebrew on a Switch with the [Atmosphère](https://github.com/Atmosp
 - **Do not ask for ROMs, and never share ROMs or `mm.o2r` files**, here or anywhere else. Issues, pull requests or comments that link to ROMs, or ask for them, will be closed and deleted.
 - Downloading a ROM of a game you do not own is piracy and illegal in most countries. We do not condone piracy.
 - This is a non-commercial fan project. It is not affiliated with, endorsed or sponsored by Nintendo. *The Legend of Zelda* and *Majora's Mask* are trademarks of Nintendo.
-
-> 🇫🇷 Ce dépôt ne contient **aucune ROM ni aucune donnée du jeu**, et ses releases n'en contiendront jamais. Pour l'utiliser, tu dois **posséder la cartouche originale** et en faire toi-même le dump. Les données du jeu (`mm.o2r`) sont générées sur ton propre ordinateur à partir de ce dump. Ne demande pas de ROM et n'en partage jamais, ni de fichier `mm.o2r` : ce serait du piratage, illégal dans la plupart des pays. Projet amateur non commercial, sans lien avec Nintendo.
-
 ## Based on
 
 | Component | Version |

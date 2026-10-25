@@ -593,7 +593,10 @@ ArchiveVersion mmArchiveVersion = DetectArchiveVersion("mm.o2r", true);
                     if (success && extractStep == ES_EXTRACT) {
                         extractStep = ES_VERIFY;
                     } else if (!success) {
-                        std::string error = extract.GetLastError();
+                        std::string error;
+#if !defined(__SWITCH__) && !defined(__WIIU__)
+                        error = extract.GetLastError();
+#endif
                         if (error.empty()) {
                             error = "ROM extraction failed.";
                         }

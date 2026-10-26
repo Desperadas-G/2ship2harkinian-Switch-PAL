@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Windows generator files ship as-is in the release zip
+tools/windows/** text eol=crlf

@@ -38,7 +38,7 @@ Sie läuft als Homebrew auf einer Switch mit der Custom Firmware [Atmosphère](h
 | PAL 1.0 (erste europäische Version) | ❌ | `E97955C6` | – |
 | Japanische Versionen, GameCube PAL, *Majora's Mask 3D* | ❌ | – | – |
 
-PAL-1.0- und PAL-1.1-Module sehen gleich aus. Unterscheiden lassen sie sich am Header-CRC (Bytes `0x10` bis `0x13` eines `.z64`-Dumps), den `tools/generate-o2r.sh` für dich prüft. Dumps mit vertauschter Bytereihenfolge (`.v64`, `.n64`) werden automatisch umgewandelt.
+PAL-1.0- und PAL-1.1-Module sehen gleich aus. Unterscheiden lassen sie sich am Header-CRC (Bytes `0x10` bis `0x13` eines `.z64`-Dumps), den der Windows-Generator und `tools/generate-o2r.sh` für dich prüfen. Dumps mit vertauschter Bytereihenfolge (`.v64`, `.n64`) werden automatisch umgewandelt.
 
 Veränderte oder übersetzte ROMs (Fan-Übersetzungen, Hacks) werden nicht unterstützt.
 
@@ -46,11 +46,17 @@ Veränderte oder übersetzte ROMs (Fan-Übersetzungen, Hacks) werden nicht unter
 
 ### 1. Dateien herunterladen
 
-Lade `2ship.nro` und `2ship.o2r` unter [Releases](../../releases) herunter, oder [kompiliere sie selbst](docs/BUILDING_SWITCH.md).
+**Unter Windows** lädst du `2Ship-Switch-PAL-vX.Y.Z-windows.zip` unter [Releases](../../releases) herunter und entpackst es. Es enthält die Switch-Dateien und einen fertigen `mm.o2r`-Generator: Du musst nichts installieren.
+
+Auf anderen Systemen lädst du `2ship.nro` und `2ship.o2r` unter [Releases](../../releases) herunter, oder du [kompilierst sie selbst](docs/BUILDING_SWITCH.md).
 
 ### 2. `mm.o2r` aus deiner ROM erzeugen
 
-`mm.o2r` enthält die Spieldaten, die aus deiner ROM extrahiert werden. Erzeuge die Datei auf einem PC mit Linux oder WSL (Windows):
+`mm.o2r` enthält die Spieldaten, die aus deiner ROM extrahiert werden.
+
+**Windows:** Ziehe deine ROM (`.z64`, `.n64`, `.v64` oder das `.zip`, in dem sie liegt) auf **`Generate mm.o2r.bat`**. Nach etwa einer Minute wird `switch\2s2h\mm.o2r` erstellt: Kopiere den ganzen Ordner `switch` in das Hauptverzeichnis deiner SD-Karte und mach mit Schritt 4 weiter.
+
+**Linux oder WSL:**
 
 ```bash
 git clone <dieses Repository>

@@ -38,7 +38,7 @@ Funciona como homebrew en una Switch con el custom firmware [Atmosphère](https:
 | PAL 1.0 (primera versión europea) | ❌ | `E97955C6` | – |
 | Versiones japonesas, GameCube PAL, *Majora's Mask 3D* | ❌ | – | – |
 
-Los cartuchos PAL 1.0 y 1.1 son iguales por fuera. Se distinguen por el CRC de cabecera (bytes `0x10` a `0x13` de un volcado `.z64`), que `tools/generate-o2r.sh` comprueba por ti. Los volcados con el orden de bytes invertido (`.v64`, `.n64`) se convierten automáticamente.
+Los cartuchos PAL 1.0 y 1.1 son iguales por fuera. Se distinguen por el CRC de cabecera (bytes `0x10` a `0x13` de un volcado `.z64`), que el generador de Windows y `tools/generate-o2r.sh` comprueban por ti. Los volcados con el orden de bytes invertido (`.v64`, `.n64`) se convierten automáticamente.
 
 Las ROMs modificadas o traducidas (traducciones de fans, hacks) no son compatibles.
 
@@ -46,11 +46,17 @@ Las ROMs modificadas o traducidas (traducciones de fans, hacks) no son compatibl
 
 ### 1. Descargar los archivos
 
-Descarga `2ship.nro` y `2ship.o2r` desde [Releases](../../releases), o [compílalos tú mismo](docs/BUILDING_SWITCH.md).
+**En Windows**, descarga `2Ship-Switch-PAL-vX.Y.Z-windows.zip` desde [Releases](../../releases) y descomprímelo. Contiene los archivos de Switch y un generador de `mm.o2r` listo para usar: no hay que instalar nada.
+
+En otros sistemas, descarga `2ship.nro` y `2ship.o2r` desde [Releases](../../releases), o [compílalos tú mismo](docs/BUILDING_SWITCH.md).
 
 ### 2. Generar `mm.o2r` a partir de tu ROM
 
-`mm.o2r` contiene los datos del juego, extraídos de tu ROM. Genéralo en un PC con Linux o WSL (Windows):
+`mm.o2r` contiene los datos del juego, extraídos de tu ROM.
+
+**Windows:** arrastra tu ROM (`.z64`, `.n64`, `.v64`, o el `.zip` que la contiene) sobre **`Generate mm.o2r.bat`**. En alrededor de un minuto se crea `switch\2s2h\mm.o2r`: copia toda la carpeta `switch` a la raíz de tu tarjeta SD y pasa al paso 4.
+
+**Linux o WSL:**
 
 ```bash
 git clone <este repositorio>

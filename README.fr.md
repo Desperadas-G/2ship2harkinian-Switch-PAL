@@ -38,7 +38,7 @@ Il s'utilise comme homebrew sur une Switch équipée du custom firmware [Atmosph
 | PAL 1.0 (première version européenne) | ❌ | `E97955C6` | – |
 | Versions japonaises, GameCube PAL, *Majora's Mask 3D* | ❌ | – | – |
 
-Les cartouches PAL 1.0 et 1.1 se ressemblent. C'est le CRC d'en-tête (octets `0x10` à `0x13` d'un dump `.z64`) qui permet de les distinguer, et `tools/generate-o2r.sh` le vérifie pour toi. Les dumps dont les octets sont inversés (`.v64`, `.n64`) sont convertis automatiquement.
+Les cartouches PAL 1.0 et 1.1 se ressemblent. C'est le CRC d'en-tête (octets `0x10` à `0x13` d'un dump `.z64`) qui permet de les distinguer, et le générateur Windows comme `tools/generate-o2r.sh` le vérifient pour toi. Les dumps dont les octets sont inversés (`.v64`, `.n64`) sont convertis automatiquement.
 
 Les ROMs modifiées ou traduites (traductions amateurs, hacks) ne sont pas compatibles.
 
@@ -46,11 +46,17 @@ Les ROMs modifiées ou traduites (traductions amateurs, hacks) ne sont pas compa
 
 ### 1. Récupérer les fichiers
 
-Télécharge `2ship.nro` et `2ship.o2r` depuis les [Releases](../../releases), ou [compile-les toi-même](docs/BUILDING_SWITCH.md).
+**Sous Windows**, télécharge `2Ship-Switch-PAL-vX.Y.Z-windows.zip` depuis les [Releases](../../releases) et décompresse-le. Il contient les fichiers Switch et un générateur de `mm.o2r` prêt à l'emploi : rien à installer.
+
+Sur les autres systèmes, télécharge `2ship.nro` et `2ship.o2r` depuis les [Releases](../../releases), ou [compile-les toi-même](docs/BUILDING_SWITCH.md).
 
 ### 2. Générer `mm.o2r` à partir de ta ROM
 
-`mm.o2r` contient les données du jeu, extraites de ta ROM. Génère-le sur un PC sous Linux ou WSL (Windows) :
+`mm.o2r` contient les données du jeu, extraites de ta ROM.
+
+**Windows :** glisse ta ROM (`.z64`, `.n64`, `.v64`, ou le `.zip` qui la contient) sur **`Generate mm.o2r.bat`**. Au bout d'environ une minute, `switch\2s2h\mm.o2r` est créé : copie tout le dossier `switch` à la racine de ta carte SD et passe à l'étape 4.
+
+**Linux ou WSL :**
 
 ```bash
 git clone <ce dépôt>

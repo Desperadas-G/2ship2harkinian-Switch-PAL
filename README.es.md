@@ -30,12 +30,6 @@ No lo abras desde el Álbum: el modo applet no tiene suficiente memoria.
 
 El generador comprueba tu ROM y te avisa si no es compatible.
 
-## Para saber
-
-- **Menú de 2Ship:** botón Menos (−).
-- **Texturas HD:** consulta [MM Reloaded HD en Switch](../../discussions/2).
-- **Errores:** abre una [issue](../../issues). No pidas ayuda sobre este fork en el Discord oficial de 2Ship.
-
 ## ⚖️ Aviso legal
 
 - Ni aquí ni en las releases se incluyen ROMs ni datos de Nintendo. Tienes que volcar **tu propio** cartucho.

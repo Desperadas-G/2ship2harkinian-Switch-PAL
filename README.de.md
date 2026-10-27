@@ -30,12 +30,6 @@ Starte es nicht über das Album: Im Applet-Modus reicht der Speicher nicht.
 
 Der Generator prüft deine ROM und sagt dir, wenn sie nicht unterstützt wird.
 
-## Gut zu wissen
-
-- **2Ship-Menü:** Minus-Taste (−).
-- **HD-Texturen:** siehe [MM Reloaded HD auf der Switch](../../discussions/2).
-- **Fehler:** Erstelle ein [Issue](../../issues). Bitte frage nicht im offiziellen 2Ship-Discord nach diesem Fork.
-
 ## ⚖️ Rechtliches
 
 - Hier und in den Releases sind keine ROMs und keine Nintendo-Daten enthalten. Du musst **dein eigenes** Modul dumpen.

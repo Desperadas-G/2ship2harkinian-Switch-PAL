@@ -1,7 +1,7 @@
 name: switch-build
 on:
+  # Builds run on release tags and pull requests only: a tag run builds everything before publishing
   push:
-    branches: [main]
     tags: ["v*"]
   pull_request:
   workflow_dispatch:

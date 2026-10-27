@@ -91,25 +91,25 @@ jobs:
         run: |
           mkdir -p pkg/switch/2s2h
           cp dist/2ship.nro dist/2ship.o2r pkg/switch/2s2h/
-          (cd pkg && zip -r ../2Ship-Switch-PAL-${GITHUB_REF_NAME}.zip switch)
-          # Windows zip: the same SD files plus the drag-and-drop mm.o2r generator
+          # The drag-and-drop mm.o2r generator (Windows) ships next to the SD files
           gen=pkg/generator
           mkdir -p $gen/assets
           cp dist/ZAPD.exe tools/windows/generate-mm-o2r.ps1 $gen/
           cp -r mm/assets/extractor mm/assets/xml $gen/assets/
           sed -n 's/^project(2s2h VERSION \([^ ]*\) .*/\1/p' CMakeLists.txt > $gen/portver.txt
           cp "tools/windows/Generate mm.o2r.bat" tools/windows/README.txt pkg/
-          (cd pkg && zip -r ../2Ship-Switch-PAL-${GITHUB_REF_NAME}-windows.zip .)
+          (cd pkg && zip -r ../2Ship-Switch-PAL-${GITHUB_REF_NAME}.zip .)
       - uses: softprops/action-gh-release@v2
         with:
           files: |
-            2Ship-Switch-PAL-${{ github.ref_name }}-windows.zip
             2Ship-Switch-PAL-${{ github.ref_name }}.zip
             dist/2ship.nro
             dist/2ship.o2r
           body: |
-            **No ROM and no game data are included.** You must own the original game and generate `mm.o2r` yourself from your own cartridge dump.
+            **No ROM and no game data are included.** You must own the original game and create `mm.o2r` from your own cartridge dump.
 
-            **Windows (easiest):** download `2Ship-Switch-PAL-${{ github.ref_name }}-windows.zip`, extract it, drop your ROM on `Generate mm.o2r.bat`, then copy the `switch` folder to the root of your SD card.
+            1. Download `2Ship-Switch-PAL-${{ github.ref_name }}.zip` and extract it.
+            2. Drop your ROM on `Generate mm.o2r.bat` (on a Windows PC). Without Windows, use `tools/generate-o2r.sh` from this tag.
+            3. Copy the `switch` folder to the root of your SD card.
 
-            **Linux / WSL:** download `2Ship-Switch-PAL-${{ github.ref_name }}.zip`, generate `mm.o2r` with `tools/generate-o2r.sh` from this exact tag (see the README) and put it in `sdmc:/switch/2s2h/` next to `2ship.nro`.
+            Updating: replace `2ship.nro` and `2ship.o2r`, keep your `mm.o2r`.

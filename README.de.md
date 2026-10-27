@@ -4,134 +4,63 @@
 
 [![switch-build](https://github.com/Desperadas-G/2ship2harkinian-Switch-PAL/actions/workflows/switch.yml/badge.svg)](https://github.com/Desperadas-G/2ship2harkinian-Switch-PAL/actions/workflows/switch.yml)
 
-Eine inoffizielle Nintendo-Switch-Portierung von [2 Ship 2 Harkinian](https://github.com/2ship2harkinian/2ship2harkinian) (2S2H), die auch die **europäische Version (PAL 1.1) von *The Legend of Zelda: Majora's Mask*** unterstützt, mit allen vier Sprachen: **Englisch, Französisch, Deutsch und Spanisch**.
-
-Sie läuft als Homebrew auf einer Switch mit der Custom Firmware [Atmosphère](https://github.com/Atmosphere-NX/Atmosphere).
-
-> Dieses Projekt steht in keiner Verbindung zu Nintendo, HarbourMasters oder dem 2Ship-Team. Bitte frage auf dem offiziellen 2Ship-Discord nicht nach Hilfe zu diesem Fork. Nutze stattdessen die [Issues](../../issues) dieses Repositorys.
-
-## ⚖️ Rechtliche Hinweise
-
-- **Dieses Repository enthält keine ROM und keine Daten von Nintendo**, und seine Releases werden auch nie welche enthalten. Es enthält nur Quellcode, und der ist keine Kopie des Spiels: Der Spielcode wurde vom Projekt [zeldaret/mm](https://github.com/zeldaret/mm) dekompiliert und in C neu geschrieben.
-- **Du musst eine legal erworbene Kopie von *The Legend of Zelda: Majora's Mask* besitzen** und sie **von deinem eigenen Modul** auslesen (bzw. von deiner eigenen GameCube-Disc für die US-GC-Version). Die Spieldaten (`mm.o2r`) werden auf deinem eigenen Computer aus deinem Dump erzeugt.
-- **Frage nicht nach ROMs, und teile niemals ROMs oder `mm.o2r`-Dateien**, weder hier noch anderswo. Issues, Pull Requests oder Kommentare, die auf ROMs verlinken oder nach ihnen fragen, werden geschlossen und gelöscht.
-- Die ROM eines Spiels herunterzuladen, das man nicht besitzt, ist Piraterie und in den meisten Ländern illegal. Wir dulden keine Piraterie.
-- Dies ist ein nicht-kommerzielles Fanprojekt. Es ist weder mit Nintendo verbunden noch von Nintendo unterstützt oder gesponsert. *The Legend of Zelda* und *Majora's Mask* sind Marken von Nintendo.
-
-## Grundlage
-
-| Komponente | Version |
-|---|---|
-| 2 Ship 2 Harkinian | **5.0.1 „Battler Bravo“** |
-| Switch-Portierung | [starshopper612/2ship2harkinian-Switch](https://github.com/starshopper612/2ship2harkinian-Switch) `switch-5.0.1-v3` (Gyro und Rumble) |
-| PAL-1.1-Unterstützung | [2ship2harkinian#1966](https://github.com/2ship2harkinian/2ship2harkinian/pull/1966) von alexbcz ([alexbcz/2ship2harkinian-PAL](https://github.com/alexbcz/2ship2harkinian-PAL)) |
-
-## Unterstützte ROMs
-
-2Ship enthält **keine** urheberrechtlich geschützten Daten. Du musst dein eigenes Modul auslesen.
-
-| Version | Unterstützt | Header-CRC | SHA-1 (`.z64`) |
-|---|---|---|---|
-| **PAL 1.1 / Rev A** (Europa, En/Fr/De/Es) | ✅ | `0A5D8F83` | `bb4e4757d10727c7584c59c1f2e5f44196e9c293` |
-| NTSC-U 1.0 (USA) | ✅ | `5354631C` | `d6133ace5afaa0882cf214cf88daba39e266c078` |
-| NTSC-U GameCube (Collector's Edition) | ✅ | `B443EB08` | `9743aa026e9269b339eb0e3044cd5830a440c1fd` |
-| PAL 1.0 (erste europäische Version) | ❌ | `E97955C6` | – |
-| Japanische Versionen, GameCube PAL, *Majora's Mask 3D* | ❌ | – | – |
-
-PAL-1.0- und PAL-1.1-Module sehen gleich aus. Unterscheiden lassen sie sich am Header-CRC (Bytes `0x10` bis `0x13` eines `.z64`-Dumps), den der Windows-Generator und `tools/generate-o2r.sh` für dich prüfen. Dumps mit vertauschter Bytereihenfolge (`.v64`, `.n64`) werden automatisch umgewandelt.
-
-Veränderte oder übersetzte ROMs (Fan-Übersetzungen, Hacks) werden nicht unterstützt.
+*Majora's Mask* auf der Nintendo Switch (Atmosphère) mit [2 Ship 2 Harkinian](https://github.com/2ship2harkinian/2ship2harkinian), jetzt auch mit der **europäischen PAL-1.1-Version** (Englisch, Französisch, Deutsch, Spanisch).
 
 ## Installation
 
-### 1. Dateien herunterladen
+1. Lade **`2Ship-Switch-PAL-vX.Y.Z.zip`** aus dem [neuesten Release](../../releases/latest) herunter und entpacke es.
+2. Erzeuge die Spieldaten aus deiner ROM: Ziehe sie am PC (`.z64`, `.n64`, `.v64` oder `.zip`) auf **`Generate mm.o2r.bat`** und warte etwa eine Minute.
+3. Kopiere den Ordner **`switch`** in das Hauptverzeichnis deiner SD-Karte.
+4. Halte **R** gedrückt, während du ein beliebiges Spiel startest, um das Homebrew-Menü zu öffnen, und starte **2 Ship 2 Harkinian**.
 
-**Unter Windows** lädst du `2Ship-Switch-PAL-vX.Y.Z-windows.zip` unter [Releases](../../releases) herunter und entpackst es. Es enthält die Switch-Dateien und einen fertigen `mm.o2r`-Generator: Du musst nichts installieren.
+Starte es nicht über das Album: Im Applet-Modus reicht der Speicher nicht.
 
-Auf anderen Systemen lädst du `2ship.nro` und `2ship.o2r` unter [Releases](../../releases) herunter, oder du [kompilierst sie selbst](docs/BUILDING_SWITCH.md).
+**Update:** Ersetze `2ship.nro` und `2ship.o2r`. Deine `mm.o2r` und deine Spielstände bleiben erhalten.
 
-### 2. `mm.o2r` aus deiner ROM erzeugen
+`Generate mm.o2r.bat` läuft unter Windows. Unter Linux oder macOS nimmst du stattdessen `tools/generate-o2r.sh` ([docs/BUILDING_SWITCH.md](docs/BUILDING_SWITCH.md)).
 
-`mm.o2r` enthält die Spieldaten, die aus deiner ROM extrahiert werden.
+## Unterstützte ROMs
 
-**Windows:** Ziehe deine ROM (`.z64`, `.n64`, `.v64` oder das `.zip`, in dem sie liegt) auf **`Generate mm.o2r.bat`**. Nach etwa einer Minute wird `switch\2s2h\mm.o2r` erstellt: Kopiere den ganzen Ordner `switch` in das Hauptverzeichnis deiner SD-Karte und mach mit Schritt 4 weiter.
+| Version | Header-CRC |
+|---|---|
+| PAL 1.1 / Rev A (Europa, En/Fr/De/Es) ✅ | `0A5D8F83` |
+| NTSC-U 1.0 (USA) ✅ | `5354631C` |
+| NTSC-U GameCube ✅ | `B443EB08` |
+| PAL 1.0, japanische Versionen, Hacks und Übersetzungen ❌ | – |
 
-**Linux oder WSL:**
+Der Generator prüft deine ROM und sagt dir, wenn sie nicht unterstützt wird.
 
-```bash
-git clone <dieses Repository>
-cd 2ship2harkinian-Switch-PAL
-tools/generate-o2r.sh /pfad/zu/deiner/rom.z64
-```
+## Gut zu wissen
 
-Installiere zuerst die Abhängigkeiten. Sie sind in [docs/BUILDING_SWITCH.md](docs/BUILDING_SWITCH.md#1-host-dependencies) aufgeführt.
+- **2Ship-Menü:** Minus-Taste (−).
+- **HD-Texturen:** siehe [MM Reloaded HD auf der Switch](../../discussions/2).
+- **Fehler:** Erstelle ein [Issue](../../issues). Bitte frage nicht im offiziellen 2Ship-Discord nach diesem Fork.
 
-`mm.o2r` muss mit **derselben Version** dieses Repositorys erzeugt werden wie die `2ship.nro`, die du verwendest. Teile deine `mm.o2r` niemals: Sie enthält die urheberrechtlich geschützten Daten des Spiels.
+## ⚖️ Rechtliches
 
-### 3. Auf die SD-Karte kopieren
-
-```
-sdmc:/switch/2s2h/
-├── 2ship.nro
-├── 2ship.o2r
-└── mm.o2r
-```
-
-### 4. Starten
-
-Öffne das Homebrew-Menü, indem du **beim Starten eines Spiels R gedrückt hältst** (Title Override). Starte es nicht über das Album: Im Applet-Modus steht zu wenig Speicher zur Verfügung, und das Spiel stürzt ab oder startet gar nicht.
-
-### 5. Sprache wählen (nur PAL)
-
-Wähle die Sprache in den Spieloptionen. Die Auswahl wird gespeichert.
-
-<img src="docs/screenshots/options-language.jpg" width="640" alt="Optionsbildschirm der PAL-Version mit den vier Sprachen: English, Deutsch, Français, Español">
-
-_Der PAL-Optionsbildschirm auf der Switch (hier mit Französisch)._
-
-## Steuerung
-
-- **Minus (−)** öffnet das 2Ship-Menü (Verbesserungen, Cheats, Einstellungen).
-- **Gyro-Zielen** und **Rumble** funktionieren mit Joy-Cons, dem Pro Controller und kompatiblen Controllern von Drittanbietern. Die Gyro-Quelle (linker, rechter oder beide Joy-Cons) lässt sich in den Controller-Einstellungen wählen.
-
-Beim Anlegen eines Spielstands fragt 2Ship 5.x nach **Vanilla** oder **Randomizer** und danach nach einem Options-Preset (*None*, *Curated*, *Defaults*, *Voyage 3*). Für das Originalspiel wähle **Vanilla** mit **Defaults**.
-
-<img src="docs/screenshots/new-file-mode.jpg" width="640" alt="New-File-Bildschirm: Options-Preset und Modus Vanilla / Randomizer">
-
-_Der Bildschirm für einen neuen Spielstand: Options-Preset und Modus Vanilla / Randomizer._
-
-## Bekannte Einschränkungen
-
-- Die PAL-Unterstützung ist neu und stammt aus einem Upstream-Pull-Request, der noch nicht übernommen wurde. Manche übersetzten Texte oder Texturen können noch fehlerhaft sein. Bitte [melde sie](../../issues/new/choose).
-- PAL 1.0 wird noch nicht unterstützt.
-- Die Desktop-Versionen (Windows/Linux/macOS) wurden in diesem Fork nicht getestet.
-
-## Kompilieren
-
-Siehe [docs/BUILDING_SWITCH.md](docs/BUILDING_SWITCH.md) für die Switch-Version und [docs/BUILDING.md](docs/BUILDING.md) für die Upstream-Anleitung der Desktop-Versionen.
-
-## Mitwirken
-
-Fehlerberichte, Korrekturen und Verbesserungen sind willkommen. Lies vorher [CONTRIBUTING.md](CONTRIBUTING.md). Issues dürfen auf Deutsch verfasst werden.
+- Hier und in den Releases sind keine ROMs und keine Nintendo-Daten enthalten. Du musst **dein eigenes** Modul dumpen.
+- Teile niemals ROMs oder deine `mm.o2r`. Anfragen und Links werden gelöscht.
+- Ein nicht-kommerzielles Fanprojekt ohne Verbindung zu Nintendo. *The Legend of Zelda: Majora's Mask* ist © Nintendo.
 
 ## Credits
 
-Dieser Fork führt nur bestehende Arbeiten zusammen und passt sie an die Switch an. Der Verdienst gebührt:
+Basiert auf 2Ship **5.0.1 „Battler Bravo“**. Dieser Fork führt nur bestehende Arbeiten zusammen:
 
-- **[2 Ship 2 Harkinian](https://github.com/2ship2harkinian/2ship2harkinian)**: dem HarbourMasters- / 2Ship-Team und allen Mitwirkenden (die PC-Portierung, auf der alles aufbaut).
-- **[zeldaret/mm](https://github.com/zeldaret/mm)**: der Dekompilierung von *Majora's Mask*, die die Portierung erst möglich gemacht hat.
-- **[libultraship](https://github.com/Kenix3/libultraship)** (Kenix3 und Mitwirkende), **[ZAPDTR](https://github.com/HarbourMasters/ZAPDTR)** und **[OTRExporter](https://github.com/HarbourMasters/OTRExporter)** (HarbourMasters): Engine und Extraktionswerkzeuge.
-- **[YoshiCrystal9/2ship2harkinian-Switch](https://github.com/YoshiCrystal9/2ship2harkinian-Switch)**: der ursprünglichen Switch-Portierung und dem Switch-Icon.
-- **[starshopper612/2ship2harkinian-Switch](https://github.com/starshopper612/2ship2harkinian-Switch)** (vormals reflex909): der Portierung auf 5.0.1, Gyro, Rumble und den Controller-Korrekturen sowie den Switch-Forks von libultraship, OTRExporter und ZAPDTR.
-- **[timschneeb](https://github.com/timschneeb)**: dem Gyro- und Rumble-Code für die Switch (aus Shipwright-Switch).
-- **[alexbcz](https://github.com/alexbcz)**: der PAL-1.1-Unterstützung ([2ship2harkinian#1966](https://github.com/2ship2harkinian/2ship2harkinian/pull/1966), [2ship2harkinian-PAL](https://github.com/alexbcz/2ship2harkinian-PAL)) und den zugehörigen Änderungen an libultraship, OTRExporter und ZAPDTR.
-- **[inspectredc](https://github.com/inspectredc)**: den früheren PAL-Arbeiten ([2ship2harkinian#1231](https://github.com/2ship2harkinian/2ship2harkinian/pull/1231), MM-PAL-Unterstützung in ZAPDTR und OTRExporter).
-- **[devkitPro](https://devkitpro.org)**: der Switch-Toolchain und libnx.
+- [2 Ship 2 Harkinian](https://github.com/2ship2harkinian/2ship2harkinian): das HarbourMasters- / 2Ship-Team und alle Mitwirkenden
+- [zeldaret/mm](https://github.com/zeldaret/mm): die Dekompilierung von *Majora's Mask*
+- [libultraship](https://github.com/Kenix3/libultraship) (Kenix3), [ZAPDTR](https://github.com/HarbourMasters/ZAPDTR) und [OTRExporter](https://github.com/HarbourMasters/OTRExporter) (HarbourMasters)
+- [YoshiCrystal9](https://github.com/YoshiCrystal9/2ship2harkinian-Switch): die erste Switch-Portierung und das Icon
+- [starshopper612](https://github.com/starshopper612/2ship2harkinian-Switch) (ehemals reflex909): die 5.0.1-Switch-Portierung, Gyro, Rumble, Controller
+- [timschneeb](https://github.com/timschneeb): der Gyro- und Rumble-Code (Shipwright-Switch)
+- [alexbcz](https://github.com/alexbcz): die PAL-1.1-Unterstützung ([2ship2harkinian#1966](https://github.com/2ship2harkinian/2ship2harkinian/pull/1966))
+- [inspectredc](https://github.com/inspectredc): frühere PAL-Arbeiten ([2ship2harkinian#1231](https://github.com/2ship2harkinian/2ship2harkinian/pull/1231))
+- [devkitPro](https://devkitpro.org): die Switch-Toolchain und libnx
 
-Die genauen Commits stehen in [docs/SOURCES.md](docs/SOURCES.md).
+Genaue Commits: [docs/SOURCES.md](docs/SOURCES.md). Lizenz: [LICENSE](LICENSE), dazu `libultraship/`, `OTRExporter/` und `ZAPDTR/LICENSE`.
 
-## Lizenz
-
-Es gelten die Lizenzen der Originalprojekte: siehe [LICENSE](LICENSE) sowie `libultraship/LICENSE`, `OTRExporter/LICENSE` und `ZAPDTR/LICENSE` für die enthaltenen Komponenten.
-
-*The Legend of Zelda: Majora's Mask* ist © Nintendo. Dieses Repository enthält keine Spieldaten.
+<a href="https://github.com/Kenix3/libultraship/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/poweredbylus.darkmode.png">
+    <img alt="Powered by libultraship" src="./docs/poweredbylus.lightmode.png">
+  </picture>
+</a>

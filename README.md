@@ -24,8 +24,6 @@ Don't launch it from the Album: applet mode doesn't have enough memory.
 | Version | Header CRC |
 |---|---|
 | PAL 1.1 / Rev A (Europe, En/Fr/De/Es) ✅ | `0A5D8F83` |
-| NTSC-U 1.0 (USA) ✅ | `5354631C` |
-| NTSC-U GameCube ✅ | `B443EB08` |
 | PAL 1.0, Japanese versions, hacks and translations ❌ | – |
 
 The generator checks your ROM and tells you if it isn't supported.

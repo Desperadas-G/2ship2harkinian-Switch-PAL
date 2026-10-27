@@ -24,8 +24,6 @@ Starte es nicht über das Album: Im Applet-Modus reicht der Speicher nicht.
 | Version | Header-CRC |
 |---|---|
 | PAL 1.1 / Rev A (Europa, En/Fr/De/Es) ✅ | `0A5D8F83` |
-| NTSC-U 1.0 (USA) ✅ | `5354631C` |
-| NTSC-U GameCube ✅ | `B443EB08` |
 | PAL 1.0, japanische Versionen, Hacks und Übersetzungen ❌ | – |
 
 Der Generator prüft deine ROM und sagt dir, wenn sie nicht unterstützt wird.

@@ -24,8 +24,6 @@ Ne le lance pas depuis l'Album : le mode applet n'a pas assez de mémoire.
 | Version | CRC d'en-tête |
 |---|---|
 | PAL 1.1 / Rev A (Europe, En/Fr/De/Es) ✅ | `0A5D8F83` |
-| NTSC-U 1.0 (USA) ✅ | `5354631C` |
-| NTSC-U GameCube ✅ | `B443EB08` |
 | PAL 1.0, versions japonaises, hacks et traductions ❌ | – |
 
 Le générateur vérifie ta ROM et te prévient si elle n'est pas compatible.
